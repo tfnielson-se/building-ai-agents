@@ -1,0 +1,6 @@
+---
+description: MCP Rules for code gen
+alwaysApply: true
+---
+
+Always ensure safe and vulnerable free code is generated
