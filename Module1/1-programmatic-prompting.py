@@ -4,17 +4,19 @@ from typing import List, Dict
 
 def generate_response(messages: List[Dict]) -> str:
     """Call LLM to get response"""
-    response = completion(
-        model="openai/gpt-4o",
-        messages=messages,
-        max_tokens=1024
-    )
+    response = completion(model="openai/gpt-4o", messages=messages, max_tokens=1024)
     return response.choices[0].message.content
 
 
 messages = [
-    {"role": "system", "content": "You are an expert software engineer that prefers functional programming."},
-    {"role": "user", "content": "Write a function to swap the keys and values in a dictionary."}
+    {
+        "role": "system",
+        "content": "You are an expert software engineer that prefers functional programming.",
+    },
+    {
+        "role": "user",
+        "content": "Write a function to swap the keys and values in a dictionary.",
+    },
 ]
 
 response = generate_response(messages)
@@ -32,8 +34,8 @@ print(response)
 
 # “system”: Provides the model with initial instructions, rules, or configuration for how it should behave throughout the session. This message is not part of the “conversation” but sets the ground rules or context (e.g., “You will respond in JSON.”).
 # “user”: Represents input from the user. This is where you provide your prompts, questions, or instructions.
+
 # “assistant”: Represents responses from the AI model. You can include this role to provide context for a conversation that has already started or to guide the model by showing sample responses. These messages are interpreted as what the “model” said in the passt.
 # We specify the model using the provider/model format (e.g., “openai/gpt-4o”)
 
 # The response contains the generated text in choices[0].message.content. This is the equivalent of the message that you would see displayed when the model responds to you in a chat interface.
-
